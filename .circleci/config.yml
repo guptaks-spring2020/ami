@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Validate base
+          name: Validate AMI
           command: packer validate ubuntu.json
       - run:
           name: Build AMI
