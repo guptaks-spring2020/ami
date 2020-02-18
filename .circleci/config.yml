@@ -9,7 +9,7 @@ jobs:
       - checkout
       - run:
           name: Validate AMI
-          command: packer validate ubuntu.json
+          command: packer validate ubuntu-ami.json
       - run:
           name: Build AMI
           command: |
