@@ -1,0 +1,30 @@
+version: 2
+jobs:
+
+  build-base:
+    docker:
+      - image: hashicorp/packer:1.1.1
+    working_directory: ~/packer
+    steps:
+      - checkout
+      - run:
+          name: Validate base
+          command: packer validate ubuntu.json
+      - run:
+          name: Build AMI
+          command: |
+            packer build \
+            -var "aws_region=${AWS_REGION}" \
+            -var "aws_access_key=${AWS_ACCESS_KEY_ID}" \
+            -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}" \
+            ubuntu.json
+
+workflows:
+  version: 2
+
+  build_deploy:
+    jobs:
+      - build-base:
+          filters:
+            branches:
+              only: master

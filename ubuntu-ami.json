@@ -1,0 +1,56 @@
+{
+    "variables": {
+        "aws_access_key": "",
+        "aws_secret_key": "",
+        "aws_region": "",
+        "subnet_id": "",
+        "source_ami": "ami-07ebfd5b3428b6f4d",
+        "ssh_username": "ubuntu",
+        "ami_users": "696709895707,886864182410"
+    },
+    "builders": [
+        {
+            "type": "amazon-ebs",
+            "ami_users": "{{  user `ami_users` }}",
+            "access_key": "{{user `aws_access_key`}}",
+            "secret_key": "{{user `aws_secret_key`}}",
+            "region": "{{user `aws_region`}}",
+            "instance_type": "t2.micro",
+            "subnet_id": "{{user `subnet_id`}}",
+            "source_ami": "{{user `source_ami`}}",
+            "ssh_username": "{{user `ssh_username`}}",
+            "ami_name": "csye6225_{{timestamp}}",
+            "ami_description": "Ubuntu AMI for CSYE 6225 - Spring 2020",
+            "launch_block_device_mappings": [
+                {
+                    "device_name": "/dev/sda1",
+                    "volume_size": 8,
+                    "volume_type": "gp2",
+                    "delete_on_termination": true
+                }
+            ]
+        }
+    ],
+    "provisioners": [
+        {
+            "type": "shell",
+            "environment_vars": [
+                "FOO=foo"
+            ],
+            "inline": [
+                "sudo apt-get update",
+                "sudo apt install software-properties-common",
+                "yes | sudo add-apt-repository ppa:deadsnakes/ppa",
+                "yes | sudo apt install python3.7",
+                "python3.7 --version",
+                "sudo apt-get update",
+                "sudo apt-get -y install python3-pip",
+                "yes | sudo pip3 install django",
+                "yes | sudo pip3 install djangorestframework",
+                "yes | sudo apt-get install python3-psycopg2",
+                "sudo pip3 install bcrypt==3.1.7",
+                "sudo pip3 install django-file-md5"
+            ]
+        }
+    ]
+}
