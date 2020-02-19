@@ -10,22 +10,24 @@ jobs:
       - run:
           name: Validate AMI
           command: packer validate \
-          -var "aws_access_key=${aws_access_key}" \
-          -var "aws_secret_key=${aws_secret_key}" \
-          -var "aws_region=${aws_region}" -var "source_ami=${source_ami}" \
-          -var "ssh_username=${ssh_username}" \
-          -var "ami_users=${ami_users}" \
-          ubuntu-ami.json
+            -var "aws_region=${AWS_REGION}" \
+            -var "aws_access_key=${AWS_ACCESS_KEY_ID}" \
+            -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}" \
+            -var "source_ami=${source_ami}" \
+            -var "ssh_username=${ssh_username}" \
+            -var "ami_users=${ami_users}" \
+            ubuntu-ami.json \
       - run:
           name: Build AMI
           command: |
             packer build \
-          -var "aws_access_key=${aws_access_key}" \
-          -var "aws_secret_key=${aws_secret_key}" \
-          -var "aws_region=${aws_region}" -var "source_ami=${source_ami}" \
-          -var "ssh_username=${ssh_username}" \
-          -var "ami_users=${ami_users}" \
-          ubuntu-ami.json
+            -var "aws_region=${AWS_REGION}" \
+            -var "aws_access_key=${AWS_ACCESS_KEY_ID}" \
+            -var "aws_secret_key=${AWS_SECRET_ACCESS_KEY}" \
+            -var "source_ami=${source_ami}" \
+            -var "ssh_username=${ssh_username}" \
+            -var "ami_users=${ami_users}" \
+            ubuntu-ami.json \
 
 workflows:
   version: 2
