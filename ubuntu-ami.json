@@ -50,11 +50,7 @@
                 "yes | sudo pip3 install djangorestframework",
                 "yes | sudo apt-get install python3-psycopg2",
                 "sudo pip3 install bcrypt==3.1.7",
-                "sudo pip3 install django-file-md5",
-                "sudo apt update",
-                "yes | sudo apt install postgresql postgresql-contrib",
-                "sudo -u postgres psql -c \"CREATE USER myprojectuser WITH PASSWORD 'password';\""
-
+                "sudo pip3 install django-file-md5"
             ]
         }
     ]
