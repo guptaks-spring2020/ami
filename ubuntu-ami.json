@@ -52,8 +52,8 @@
                 "sudo pip3 install bcrypt==3.1.7",
                 "sudo pip3 install django-file-md5",
                 "sudo apt-get -y install zip unzip",
-                "sudo pip3 install boto3",
-                "sudo pip3 install django-storages"
+                "sudo pip3 install django-storages",
+                "sudo pip3 install boto3"
             ]
         }
     ]
