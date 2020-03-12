@@ -53,7 +53,13 @@
                 "sudo pip3 install django-file-md5",
                 "sudo apt-get -y install zip unzip",
                 "sudo pip3 install django-storages",
-                "sudo pip3 install boto3"
+                "sudo pip3 install boto3",
+                "sudo apt-get install ruby -y",
+                "sudo apt-get install wget -y",
+                "cd /home/ubuntu",
+                "wget https://aws-codedeploy-{{user `aws_region`}}.s3.{{user `aws_region`}}.amazonaws.com/latest/install",
+                "chmod +x ./install",
+                "sudo ./install auto"
             ]
         }
     ]
