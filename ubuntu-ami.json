@@ -59,7 +59,9 @@
                 "cd /home/ubuntu",
                 "wget https://aws-codedeploy-{{user `aws_region`}}.s3.{{user `aws_region`}}.amazonaws.com/latest/install",
                 "chmod +x ./install",
-                "sudo ./install auto"
+                "sudo ./install auto",
+                "wget https://s3.{{user `aws_region`}}.amazonaws.com/amazoncloudwatch-agent-{{user `aws_region`}}/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb",
+                "sudo dpkg -i -E ./amazon-cloudwatch-agent.deb"
             ]
         }
     ]
