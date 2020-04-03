@@ -65,8 +65,8 @@
                 "sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a start",
                 "sudo pip3 install celery==4.4.2",
                 "sudo pip3 install sqlalchemy",
-                "sudo systemctl enable rabbitmq-server",
                 "sudo apt-get install rabbitmq-server -y",
+                "sudo systemctl enable rabbitmq-server",
                 "sudo apt-get -y install libcurl4-openssl-dev libssl-dev python3-dev"
             ]
         }
